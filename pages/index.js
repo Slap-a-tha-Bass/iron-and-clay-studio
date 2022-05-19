@@ -24,22 +24,34 @@ export async function getStaticProps() {
             width
           }
         }
+        products(first: 4) {
+          name
+          price
+          slug
+          image {
+            width
+            url
+            height
+          }
+        }
       }
     `,
   });
 
   const home = data.data.page;
+  const products = data.data.products;
 
   return {
     props: {
       home,
+      products,
     },
   };
 }
 
-export default function Home({ home }) {
+export default function Home({ home, products }) {
   const { heroLink, heroText, heroTitle, heroBackground } = home;
-
+  console.log("products", products);
   return (
     <div className={styles.container}>
       <Head>
@@ -60,6 +72,23 @@ export default function Home({ home }) {
         <h1 className={styles.title}>{heroTitle}</h1>
 
         <p className={styles.description}>{heroText}</p>
+
+        <div>
+          {products.map((product) => (
+            <div className={styles.productContainer} key={product.slug}>
+              <a href={`/products/${product.slug}`}>
+                <Image
+                  className={styles.productImage}
+                  src={product.image.url}
+                  height={product.image.height / 2}
+                  width={product.image.width /2}
+                />
+                <h3>{product.name}</h3>
+                <p>${product.price}</p>
+              </a>
+            </div>
+          ))}
+        </div>
 
         {/* <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
