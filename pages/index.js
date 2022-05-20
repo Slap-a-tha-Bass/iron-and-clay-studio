@@ -18,21 +18,13 @@ export async function getStaticProps() {
           heroTitle
           name
           slug
-          heroBackground {
-            height
-            url
-            width
-          }
+          heroBackground
         }
         products(first: 4) {
           name
           price
           slug
-          image {
-            width
-            url
-            height
-          }
+          image 
         }
       }
     `,
@@ -73,15 +65,16 @@ export default function Home({ home, products }) {
 
         <p className={styles.description}>{heroText}</p>
 
-        <div>
+        <div className={styles.grid}>
           {products.map((product) => (
-            <div className={styles.productContainer} key={product.slug}>
+            <div className={styles.card} key={product.slug}>
               <a href={`/products/${product.slug}`}>
                 <Image
                   className={styles.productImage}
                   src={product.image.url}
-                  height={product.image.height / 2}
-                  width={product.image.width /2}
+                  height={product.image.height > 450 ? 450 : product.image.height}
+                  width={product.image.width > 350 ? 350 : product.image.width}
+                  alt={product.name}
                 />
                 <h3>{product.name}</h3>
                 <p>${product.price}</p>

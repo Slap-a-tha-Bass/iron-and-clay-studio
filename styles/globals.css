@@ -2,11 +2,9 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    color: #fff;
-    text-shadow: 0px 0px 15px #90adf4;
-    background-color: #dae4fd;
+  font-family: 'Courier New', Courier, monospace;
+    color: #4e5b52;
+    background-color: #eadcd3;
 }
 
 a {
