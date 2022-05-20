@@ -43,7 +43,7 @@ export async function getStaticProps() {
 
 export default function Home({ home, products }) {
   const { heroLink, heroText, heroTitle, heroBackground } = home;
-  console.log("products", products);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -60,6 +60,7 @@ export default function Home({ home, products }) {
           src={heroBackground.url}
           height={heroBackground.height}
           width={heroBackground.width}
+          alt={heroBackground.name}
         />
         <h1 className={styles.title}>{heroTitle}</h1>
 
