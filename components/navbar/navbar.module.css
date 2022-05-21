@@ -3,6 +3,29 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    background-color: rgba(255,255,255,0.4);
+    background-color: #f9734e35;
     padding: 0.5em 0;
+    border-bottom: 10px solid #f9734e14;
+}
+.imageContainer {
+    position: relative;
+    height: clamp(7rem, 10vw, 12rem);
+    width: clamp(7rem, 10vw, 12rem);
+    cursor: pointer;
+}
+.cartContainer {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    cursor: pointer;
+}
+.linkContainer {
+    display:flex;
+    justify-content: space-around;
+    width: 50%;
+}
+.navLinks {
+    text-decoration: none;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+}
+.navLinks:hover {
+    text-decoration: underline;
 }
