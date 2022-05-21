@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import NavBar from "../components/navbar/navbar";
 
 export async function getStaticProps() {
   const client = new ApolloClient({
@@ -54,7 +55,7 @@ export default function Home({ home, products }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <NavBar />
       <main className={styles.main}>
         <Image
           src={heroBackground.url}
