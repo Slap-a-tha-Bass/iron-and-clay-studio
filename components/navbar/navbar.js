@@ -16,21 +16,37 @@ export default function NavBar() {
           src="https://res.cloudinary.com/slapathabass/image/upload/v1653103032/iron%20and%20clay/iron-clay-color-bg-blend-green-bold_xyz5fa.png"
           layout="fill"
           objectFit="contain"
+          alt="logo"
+          priority
         />
       </div>
       {isMobile ? (
         <button className={styles.menuButton} onClick={() => toggle(on)}>
           {on && (
             <ul className={styles.ulContainer}>
-              <li className={styles.liGroups}>Home</li>
-              <li className={styles.liGroups}>About Me</li>
-              <li className={styles.liGroups}>Products</li>
               <li className={styles.liGroups}>
-                <RiShoppingCart2Line />
+                <Link href="/">Home</Link>
+              </li>
+              <li className={styles.liGroups}>
+                <Link href="/about">About Me</Link>
+              </li>
+              <li className={styles.liGroups}>
+                <Link href="/products">Products</Link>
+              </li>
+              <li className={styles.liGroups}>
+                <Link href="/">
+                  <div>
+                    <RiShoppingCart2Line />
+                  </div>
+                </Link>
               </li>
             </ul>
           )}
-          {!on && <span className={styles.buttonSpan}><RiMenu4Line /></span>}
+          {!on && (
+            <span className={styles.buttonSpan}>
+              <RiMenu4Line />
+            </span>
+          )}
         </button>
       ) : (
         <div className={styles.linkContainer}>
