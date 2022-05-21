@@ -24,7 +24,7 @@ export async function getStaticProps() {
           name
           price
           slug
-          image 
+          image
         }
       }
     `,
@@ -52,7 +52,25 @@ export default function Home({ home, products }) {
           name="description"
           content="Handmade Pottery in Birmingham, AL | By Ashley Gooler"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicon/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon/favicon-32x32.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon/favicon-16x16.png"
+        />
+        <link rel="icon" href="/favicon/favicon.ico" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <main className={styles.main}>
         <Image
@@ -72,7 +90,9 @@ export default function Home({ home, products }) {
                 <Image
                   className={styles.productImage}
                   src={product.image.url}
-                  height={product.image.height > 450 ? 450 : product.image.height}
+                  height={
+                    product.image.height > 450 ? 450 : product.image.height
+                  }
                   width={product.image.width > 350 ? 350 : product.image.width}
                   alt={product.name}
                 />
