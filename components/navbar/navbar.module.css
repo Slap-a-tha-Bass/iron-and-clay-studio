@@ -1,14 +1,18 @@
 .navContainer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    position: fixed;
+    top:0;
     width: 100%;
-    background-color: #f9734e35;
-    padding: 0.5em 0;
-    border-bottom: 10px solid #f9734e14;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #fabdacce;
+    padding: clamp(2rem, 5vw, 3rem);
+    z-index: 1;
 }
 .imageContainer {
-    position: relative;
+    position: fixed;
+    top:0;
+    left:0;
     height: clamp(7rem, 10vw, 12rem);
     width: clamp(7rem, 10vw, 12rem);
     cursor: pointer;
@@ -16,6 +20,7 @@
 .cartContainer {
     font-size: clamp(1.5rem, 2vw, 2rem);
     cursor: pointer;
+    margin-top: 1rem;
 }
 .linkContainer {
     display:flex;
@@ -25,7 +30,26 @@
 .navLinks {
     text-decoration: none;
     font-size: clamp(1rem, 2vw, 1.5rem);
+    margin-top: 1rem;
 }
 .navLinks:hover {
     text-decoration: underline;
+}
+.menuButton {
+    background-color: transparent;
+    border: none;
+}
+.buttonSpan {
+    font-size: clamp(2rem, 2vw, 3rem);
+    color: #4e5b52;
+}
+.ulContainer {
+    position: relative;
+    top: 0;
+    right: 0;
+    list-style-type: none;
+    color: #4e5b52;
+}
+.liGroups {
+    margin: 1rem 0;
 }

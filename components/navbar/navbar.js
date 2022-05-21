@@ -1,7 +1,7 @@
-import { useReducer } from 'react';
+import { useReducer } from "react";
 import styles from "./navbar.module.css";
 import Image from "next/image";
-import { RiShoppingCart2Line } from "react-icons/ri";
+import { RiShoppingCart2Line, RiMenu4Line } from "react-icons/ri";
 import Link from "next/link";
 import mobileSetter from "../../hooks/mobileSetter";
 
@@ -19,13 +19,18 @@ export default function NavBar() {
         />
       </div>
       {isMobile ? (
-        <button onClick={() => toggle(on)}>
-            <ul>
-                <li>Home</li>
-                <li>About Me</li>
-                <li>Products</li>
-                <li><RiShoppingCart2Line /></li>
+        <button className={styles.menuButton} onClick={() => toggle(on)}>
+          {on && (
+            <ul className={styles.ulContainer}>
+              <li className={styles.liGroups}>Home</li>
+              <li className={styles.liGroups}>About Me</li>
+              <li className={styles.liGroups}>Products</li>
+              <li className={styles.liGroups}>
+                <RiShoppingCart2Line />
+              </li>
             </ul>
+          )}
+          {!on && <span className={styles.buttonSpan}><RiMenu4Line /></span>}
         </button>
       ) : (
         <div className={styles.linkContainer}>
