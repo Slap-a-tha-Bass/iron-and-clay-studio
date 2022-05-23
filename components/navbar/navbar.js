@@ -34,7 +34,7 @@ export default function NavBar() {
                 <Link href="/products">Products</Link>
               </li>
               <li className={styles.liGroups}>
-                <Link href="/">
+                <Link href="/#/cart">
                   <div>
                     <RiShoppingCart2Line />
                   </div>

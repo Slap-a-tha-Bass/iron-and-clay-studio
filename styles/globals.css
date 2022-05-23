@@ -3,8 +3,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Courier New', Courier, monospace;
-    color: #4e5b52;
-    background-color: #eadcd3;
+  color: #4e5b52;
+  background-color: #eadcd3;
 }
 
 a {
@@ -14,7 +14,8 @@ a {
 }
 button {
   -webkit-tap-highlight-color: transparent;
-
+  font-family: 'Courier New', Courier, monospace;
+  color: #4e5b52;
 }
 
 * {

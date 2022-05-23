@@ -19,6 +19,7 @@ export async function getStaticProps({ params }) {
           description {
             html
           }
+          slug
         }
       }
     `,
@@ -69,7 +70,10 @@ export default function ProductSlug({ product }) {
     <div className={styles.main}>
       <Head>
         <title>{product.name}</title>
-        <meta name="description" content={`Find ${product.name} at Iron & Clay Studio`} />
+        <meta
+          name="description"
+          content={`Find ${product.name} at Iron & Clay Studio`}
+        />
       </Head>
       <Image
         className={styles.productImage}
@@ -85,6 +89,24 @@ export default function ProductSlug({ product }) {
         }}
       />
       <p>${product.price}</p>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          paddingTop: "1rem",
+        }}
+      >
+        <button
+          className={`snipcart-add-item ${styles.cartButton}`}
+          data-item-id={product.id}
+          data-item-price={product.price}
+          data-item-url={`/products/${product.slug}`}
+          data-item-image={product.image.url}
+          data-item-name={product.name}
+        >
+          Add to cart
+        </button>
+      </div>
     </div>
   );
 }

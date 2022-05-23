@@ -21,6 +21,7 @@ export async function getStaticProps() {
           heroBackground
         }
         products(first: 4) {
+          id
           name
           price
           slug
@@ -78,6 +79,7 @@ export default function Home({ home, products }) {
           height={heroBackground.height}
           width={heroBackground.width}
           alt={heroBackground.name}
+          priority
         />
         <h1 className={styles.title}>{heroTitle}</h1>
 
@@ -98,6 +100,24 @@ export default function Home({ home, products }) {
                 />
                 <h3>{product.name}</h3>
                 <p>${product.price}</p>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    paddingTop: "1rem",
+                  }}
+                >
+                  <button
+                    className={`snipcart-add-item ${styles.cartButton}`}
+                    data-item-id={product.id}
+                    data-item-price={product.price}
+                    data-item-url={`/products/${product.slug}`}
+                    data-item-image={product.image.url}
+                    data-item-name={product.name}
+                  >
+                    Add to cart
+                  </button>
+                </div>
               </a>
             </div>
           ))}
