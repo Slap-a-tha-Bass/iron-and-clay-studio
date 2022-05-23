@@ -9,18 +9,24 @@
     padding: clamp(2rem, 5vw, 3rem);
     z-index: 1;
 }
-.imageContainer {
-    position: fixed;
-    top:0;
-    left:0;
+.image {
+    position: relative;
     height: clamp(7rem, 10vw, 12rem);
     width: clamp(7rem, 10vw, 12rem);
+}
+.imageContainer {
+    position: fixed;
+    left:0;
     cursor: pointer;
 }
 .cartContainer {
-    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-size: clamp(1rem, 2vw, 1.5rem);
     cursor: pointer;
-    margin-top: 1rem;
+    background-color: transparent;
+    border:none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 .linkContainer {
     display:flex;
@@ -31,9 +37,11 @@
     text-decoration: none;
     font-size: clamp(1rem, 2vw, 1.5rem);
     margin-top: 1rem;
+    padding-bottom: 1rem;
 }
-.navLinks:hover {
-    text-decoration: underline;
+.navLinks:hover, .navLinks:active, .navLinks:focus {
+    padding-bottom: 14px;
+    border-bottom: 2px solid #4e5b52;
 }
 .menuButton {
     background-color: transparent;

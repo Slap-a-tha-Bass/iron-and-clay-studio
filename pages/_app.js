@@ -1,12 +1,13 @@
 import NavBar from "../components/navbar/navbar";
 import "../styles/globals.css";
+import { SnipcartProvider } from "use-snipcart";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div>
+    <SnipcartProvider>
       <NavBar />
       <Component {...pageProps} />
-    </div>
+    </SnipcartProvider>
   );
 }
 
