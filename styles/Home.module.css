@@ -94,7 +94,20 @@
   cursor: pointer;
   background-color: #f9734e35;
 }
+.card button {
+  background-color: transparent;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 2px solid #fabdacce;
+  box-shadow: 5px 5px 20px #fff inset;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.card button:hover, .card button:active, .card button:focus {
+  background-color: #ffb39e6d;
+  box-shadow: 2px 2px 10px #fff inset;
 
+}
 .card h2 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
@@ -104,14 +117,6 @@
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
-}
-.cartButton {
-  background-color: transparent;
-  padding: 1rem;
-  border-radius: 10px;
-  border: 2px solid #fabdacce;
-  font-size: 1.5rem;
-  cursor: pointer;
 }
 .logo {
   height: 1em;

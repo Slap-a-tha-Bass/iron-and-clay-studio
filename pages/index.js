@@ -108,7 +108,7 @@ export default function Home({ home, products }) {
                   }}
                 >
                   <button
-                    className={`snipcart-add-item ${styles.cartButton}`}
+                    className={`snipcart-add-item`}
                     data-item-id={product.id}
                     data-item-price={product.price}
                     data-item-url={`/products/${product.slug}`}
