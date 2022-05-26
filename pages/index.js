@@ -78,7 +78,7 @@ export default function Home({ home, products }) {
       <main className={styles.main}>
         {isMobile ? (
           <Image
-            src='https://res.cloudinary.com/slapathabass/image/upload/c_scale,w_300/v1653018174/iron%20and%20clay/bg-pottery_y1yvnp.png'
+            src={heroBackground.url}
             height={300}
             width={300}
             alt=""
