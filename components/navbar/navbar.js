@@ -27,7 +27,11 @@ export default function NavBar() {
         </Link>
       </div>
       {isMobile ? (
-        <button className={styles.menuButton} onClick={() => toggle(on)}>
+        <button
+          aria-label="Menu button"
+          className={styles.menuButton}
+          onClick={() => toggle(on)}
+        >
           {on && (
             <ul className={styles.ulContainer}>
               <li className={styles.liGroups}>
@@ -76,7 +80,10 @@ export default function NavBar() {
           <div className={styles.navLinks}>
             <Link href="/categories/plates">Plates</Link>
           </div>
-          <button className={`snipcart-checkout ${styles.cartContainer}`}>
+          <button
+            aria-label="Cart button"
+            className={`snipcart-checkout ${styles.cartContainer}`}
+          >
             <RiShoppingCart2Line />
             <span>${cart.subtotal?.toFixed(2)}</span>
           </button>

@@ -70,23 +70,30 @@ export default function Category({ category, products }) {
   return (
     <div className={styles.main}>
       <Head>
-        <title>{category.name}</title>
+        <title>{category.name} | Iron & Clay Studio by Ashley Gooler</title>
         <meta
           name="description"
           content={`Find ${category.name} at Iron & Clay Studio by Ashley Gooler`}
         />
       </Head>
       <h1>{category.name}</h1>
-      <div style={{ display:"flex", justifyContent:"center", flexWrap:"wrap", maxWidth:"80%"}}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          maxWidth: "80%",
+        }}
+      >
         {products.map((product) => {
           return (
-            <div key={product.id} style={{margin:"1rem"}}>
+            <div key={product.id} style={{ margin: "1rem" }}>
               <h2>{product.name}</h2>
               <p>${product.price}</p>
               <Image
                 className={styles.productImage}
                 src={product.image.url}
-                alt={product.name}
+                alt={`${product.name} by Ashley Gooler | Iron & Clay Studio`}
                 height={product.image.height > 450 ? 450 : product.image.height}
                 width={product.image.width > 350 ? 350 : product.image.width}
               />

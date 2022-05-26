@@ -69,7 +69,7 @@ export default function ProductSlug({ product }) {
   return (
     <div className={styles.main}>
       <Head>
-        <title>{product.name}</title>
+        <title>{product.name} | Iron & Clay Studio by Ashley Gooler</title>
         <meta
           name="description"
           content={`Find ${product.name} at Iron & Clay Studio by Ashley Gooler`}
@@ -80,7 +80,7 @@ export default function ProductSlug({ product }) {
         src={product.image.url}
         height={product.image.height > 450 ? 450 : product.image.height}
         width={product.image.width > 350 ? 350 : product.image.width}
-        alt={product.name}
+        alt={`${product.name} by Ashley Gooler | Iron & Clay Studio`}
       />
       <h1>{product.name}</h1>
       <div

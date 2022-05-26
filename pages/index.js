@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import mobileSetter from "../hooks/mobileSetter";
 
 export async function getStaticProps() {
   const client = new ApolloClient({
@@ -44,14 +45,15 @@ export async function getStaticProps() {
 
 export default function Home({ home, products }) {
   const { heroLink, heroText, heroTitle, heroBackground } = home;
+  const { isMobile } = mobileSetter();
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Iron &amp; Clay Studio</title>
+        <title>Iron &amp; Clay Studio by Ashley Gooler</title>
         <meta
           name="description"
-          content="Handmade Pottery in Birmingham, AL by Ashley Gooler"
+          content="Handmade Pottery in Birmingham, AL | Iron & Clay Studio by Ashley Gooler"
         />
         <link
           rel="apple-touch-icon"
@@ -74,13 +76,23 @@ export default function Home({ home, products }) {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <main className={styles.main}>
-        <Image
-          src={heroBackground.url}
-          height={heroBackground.height}
-          width={heroBackground.width}
-          alt={heroBackground.name}
-          priority
-        />
+        {isMobile ? (
+          <Image
+            src='https://res.cloudinary.com/slapathabass/image/upload/c_scale,w_300/v1653018174/iron%20and%20clay/bg-pottery_y1yvnp.png'
+            height={300}
+            width={300}
+            alt=""
+            priority
+          />
+        ) : (
+          <Image
+            src={heroBackground.url}
+            height={heroBackground.height}
+            width={heroBackground.width}
+            alt=""
+            priority
+          />
+        )}
         <h1 className={styles.title}>{heroTitle}</h1>
 
         <p className={styles.description}>{heroText}</p>
@@ -98,7 +110,7 @@ export default function Home({ home, products }) {
                   width={product.image.width > 350 ? 350 : product.image.width}
                   alt={product.name}
                 />
-                <h3>{product.name}</h3>
+                <h2>{product.name}</h2>
                 <p>${product.price}</p>
                 <div
                   style={{
