@@ -72,7 +72,7 @@ export default function ProductSlug({ product }) {
         <title>{product.name}</title>
         <meta
           name="description"
-          content={`Find ${product.name} at Iron & Clay Studio`}
+          content={`Find ${product.name} at Iron & Clay Studio by Ashley Gooler`}
         />
       </Head>
       <Image

@@ -20,12 +20,12 @@ export async function getStaticProps() {
           slug
           heroBackground
         }
-        products(first: 4) {
+        products(where: { categories_some: { slug: "featured" } }) {
           id
           name
           price
-          slug
           image
+          slug
         }
       }
     `,
@@ -51,7 +51,7 @@ export default function Home({ home, products }) {
         <title>Iron &amp; Clay Studio</title>
         <meta
           name="description"
-          content="Handmade Pottery in Birmingham, AL | By Ashley Gooler"
+          content="Handmade Pottery in Birmingham, AL by Ashley Gooler"
         />
         <link
           rel="apple-touch-icon"

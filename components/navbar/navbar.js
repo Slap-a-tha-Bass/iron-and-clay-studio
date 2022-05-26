@@ -37,7 +37,13 @@ export default function NavBar() {
                 <Link href="/about">About Me</Link>
               </li>
               <li className={styles.liGroups}>
-                <Link href="/products">Products</Link>
+                <Link href="/categories/bowls">Bowls</Link>
+              </li>
+              <li className={styles.liGroups}>
+                <Link href="/categories/mugs">Mugs</Link>
+              </li>
+              <li className={styles.liGroups}>
+                <Link href="/categories/plates">Plates</Link>
               </li>
               <li className={styles.liGroups}>
                 <p className={`snipcart-checkout ${styles.cartContainer}`}>
@@ -62,7 +68,13 @@ export default function NavBar() {
             <Link href="/about">About Me</Link>
           </div>
           <div className={styles.navLinks}>
-            <Link href="/products">Products</Link>
+            <Link href="/categories/bowls">Bowls</Link>
+          </div>
+          <div className={styles.navLinks}>
+            <Link href="/categories/mugs">Mugs</Link>
+          </div>
+          <div className={styles.navLinks}>
+            <Link href="/categories/plates">Plates</Link>
           </div>
           <button className={`snipcart-checkout ${styles.cartContainer}`}>
             <RiShoppingCart2Line />
