@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import mobileSetter from "../hooks/mobileSetter";
 
 export async function getStaticProps() {
   const client = new ApolloClient({
@@ -45,7 +44,6 @@ export async function getStaticProps() {
 
 export default function Home({ home, products }) {
   const { heroLink, heroText, heroTitle, heroBackground } = home;
-  const { isMobile } = mobileSetter();
 
   return (
     <div className={styles.container}>
@@ -76,23 +74,14 @@ export default function Home({ home, products }) {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <main className={styles.main}>
-        {isMobile ? (
-          <Image
-            src={heroBackground.url}
-            height={300}
-            width={300}
-            alt=""
-            priority
-          />
-        ) : (
-          <Image
-            src={heroBackground.url}
-            height={heroBackground.height}
-            width={heroBackground.width}
-            alt=""
-            priority
-          />
-        )}
+        <Image
+          src={heroBackground.url}
+          height={heroBackground.height}
+          width={heroBackground.width}
+          alt=""
+          priority
+        />
+
         <h1 className={styles.title}>{heroTitle}</h1>
 
         <p className={styles.description}>{heroText}</p>
