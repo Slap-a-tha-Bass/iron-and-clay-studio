@@ -70,7 +70,7 @@ export default function Category({ category, products }) {
   return (
     <div className={styles.main}>
       <Head>
-        <title>{category.name} | Iron & Clay Studio by Ashley Gooler</title>
+        <title>{category.name} | Iron & Clay Studio | Ashley Gooler</title>
         <meta
           name="description"
           content={`Find ${category.name} at Iron & Clay Studio by Ashley Gooler`}

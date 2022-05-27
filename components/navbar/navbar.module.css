@@ -33,15 +33,39 @@
     justify-content: space-around;
     width: 50%;
 }
+.productsContainer {
+    position: fixed;
+    top:1;
+    left:1;
+    padding: 1rem 3rem;
+    background-color: #fabdacce;
+    text-align: left;
+    margin-left: -2rem;
+    border-radius: 10px;
+}
 .navLinks {
     text-decoration: none;
     font-size: clamp(1rem, 2vw, 1.5rem);
     margin-top: 1rem;
     padding-bottom: 1rem;
+    background-color: transparent;
+    border:none;
 }
 .navLinks:hover, .navLinks:active, .navLinks:focus {
+    cursor: pointer;
     padding-bottom: 14px;
     border-bottom: 2px solid #4e5b52;
+}
+.navLinksDisabled {
+    text-decoration: none;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: transparent;
+    border:none;
+}
+.navLinksDisabled :hover, .navLinkDisabled :active, .navLinkDisabled :focus {
+    text-decoration: none;
 }
 .menuButton {
     background-color: transparent;

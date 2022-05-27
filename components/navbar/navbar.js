@@ -9,6 +9,7 @@ import { useSnipcart } from "use-snipcart";
 export default function NavBar() {
   const { isMobile } = mobileSetter();
   const [on, toggle] = useReducer((s) => !s, false);
+  const [productListOn, productListToggle] = useReducer((s) => !s, false);
   const { cart = {} } = useSnipcart();
 
   return (
@@ -50,6 +51,9 @@ export default function NavBar() {
                 <Link href="/categories/plates">Plates</Link>
               </li>
               <li className={styles.liGroups}>
+                <Link href="/stores">Store</Link>
+              </li>
+              <li className={styles.liGroups}>
                 <p className={`snipcart-checkout ${styles.cartContainer}`}>
                   <RiShoppingCart2Line />
                   <span>${cart.subtotal?.toFixed(2)}</span>
@@ -71,14 +75,37 @@ export default function NavBar() {
           <div className={styles.navLinks}>
             <Link href="/about">About Me</Link>
           </div>
+          {productListOn && (
+            <button
+              onClick={() => productListToggle(!productListOn)}
+              className={styles.navLinksDisabled}
+              aria-label="Products list button"
+            >
+              Products
+              <div className={styles.productsContainer}>
+                <div className={styles.navLinks}>
+                  <Link href="/categories/bowls">Bowls</Link>
+                </div>
+                <div className={styles.navLinks}>
+                  <Link href="/categories/mugs">Mugs</Link>
+                </div>
+                <div className={styles.navLinks}>
+                  <Link href="/categories/plates">Plates</Link>
+                </div>
+              </div>
+            </button>
+          )}
+          {!productListOn && (
+            <button
+              onClick={() => productListToggle(productListOn)}
+              className={styles.navLinks}
+              aria-label="Products menu button"
+            >
+              Products
+            </button>
+          )}
           <div className={styles.navLinks}>
-            <Link href="/categories/bowls">Bowls</Link>
-          </div>
-          <div className={styles.navLinks}>
-            <Link href="/categories/mugs">Mugs</Link>
-          </div>
-          <div className={styles.navLinks}>
-            <Link href="/categories/plates">Plates</Link>
+            <Link href="/stores">Store</Link>
           </div>
           <button
             aria-label="Cart button"

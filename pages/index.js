@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
@@ -48,7 +49,7 @@ export default function Home({ home, products }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Iron &amp; Clay Studio by Ashley Gooler</title>
+        <title>Iron &amp; Clay Studio | Ashley Gooler</title>
         <meta
           name="description"
           content="Handmade Pottery in Birmingham, AL | Iron & Clay Studio by Ashley Gooler"
@@ -74,13 +75,17 @@ export default function Home({ home, products }) {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <main className={styles.main}>
-        <Image
-          src={heroBackground.url}
-          height={heroBackground.height}
-          width={heroBackground.width}
-          alt=""
-          priority
-        />
+        <Link href={heroLink}>
+          <a>
+            <Image
+              src={heroBackground.url}
+              height={heroBackground.height}
+              width={heroBackground.width}
+              alt=""
+              priority
+            />
+          </a>
+        </Link>
 
         <h1 className={styles.title}>{heroTitle}</h1>
 

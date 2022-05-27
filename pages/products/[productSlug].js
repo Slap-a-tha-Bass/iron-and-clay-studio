@@ -69,7 +69,7 @@ export default function ProductSlug({ product }) {
   return (
     <div className={styles.main}>
       <Head>
-        <title>{product.name} | Iron & Clay Studio by Ashley Gooler</title>
+        <title>{product.name} | Iron & Clay Studio | Ashley Gooler</title>
         <meta
           name="description"
           content={`Find ${product.name} at Iron & Clay Studio by Ashley Gooler`}
