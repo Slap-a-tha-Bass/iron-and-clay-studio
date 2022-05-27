@@ -42,8 +42,12 @@ export default function Stores({ storeLocations }) {
             <h2>{store.address}</h2>
             <h3>{store.phoneNumber}</h3>
             <button>View on Map</button>
-            <a href={`https://www.google.com/maps/dir//${store.location.latitude}, ${store.location.longitude}/@${store.location.latitude}, ${store.location.longitude},15z/`} target="_blank" rel="noreferrer">
-                Get Directions
+            <a
+              href={`https://www.google.com/maps/dir//${store.location.latitude}, ${store.location.longitude}/@${store.location.latitude}, ${store.location.longitude},15z/`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Get Directions
             </a>
           </div>
         );
