@@ -5,12 +5,16 @@ import { RiShoppingCart2Line, RiMenu4Line } from "react-icons/ri";
 import Link from "next/link";
 import mobileSetter from "../../hooks/mobileSetter";
 import { useSnipcart } from "use-snipcart";
+import { useRouter } from "next/router";
 
 export default function NavBar() {
+  const { locale: activeLocal, locales, asPath } = useRouter();
   const { isMobile } = mobileSetter();
   const [on, toggle] = useReducer((s) => !s, false);
   const [productListOn, productListToggle] = useReducer((s) => !s, false);
   const { cart = {} } = useSnipcart();
+
+  const availableLocales = locales.filter((locale) => locale !== activeLocal);
 
   return (
     <nav className={styles.navContainer}>
@@ -59,6 +63,17 @@ export default function NavBar() {
                   <span>${cart.subtotal?.toFixed(2)}</span>
                 </p>
               </li>
+              <div>
+                {availableLocales.map((locale) => {
+                  return (
+                    <div key={locale}>
+                      <Link href={asPath} locale={locale}>
+                        <a>{locale}</a>
+                      </Link>
+                    </div>
+                  );
+                })}
+              </div>
             </ul>
           )}
           {!on && (
@@ -114,6 +129,17 @@ export default function NavBar() {
             <RiShoppingCart2Line />
             <span>${cart.subtotal?.toFixed(2)}</span>
           </button>
+          <div>
+            {availableLocales.map((locale) => {
+              return (
+                <div key={locale}>
+                  <Link href={asPath} locale={locale}>
+                    <a>{locale}</a>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </nav>

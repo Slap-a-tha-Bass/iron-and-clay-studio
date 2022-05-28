@@ -4,14 +4,14 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }) {
   const client = new ApolloClient({
     uri: "https://api-us-east-1.graphcms.com/v2/cl3d3o63u1nnr01xn22c8e04h/master",
     cache: new InMemoryCache(),
   });
   const data = await client.query({
     query: gql`
-      query PageHome {
+      query PageHome($locale: Locale!) {
         page(where: { slug: "home" }) {
           id
           heroLink
@@ -20,6 +20,11 @@ export async function getStaticProps() {
           name
           slug
           heroBackground
+          localizations(locales: [$locale]) {
+            heroText
+            heroTitle
+            locale
+          }
         }
         products(where: { categories_some: { slug: "featured" } }) {
           id
@@ -30,9 +35,20 @@ export async function getStaticProps() {
         }
       }
     `,
+    variables: {
+      locale
+    },
   });
 
-  const home = data.data.page;
+  let home = data.data.page;
+
+  if (home.localizations.length > 0) {
+    home = {
+      ...home,
+      ...home.localizations[0]
+    }
+  }
+
   const products = data.data.products;
 
   return {

@@ -3,14 +3,14 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import Image from "next/image";
 import Head from "next/head";
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, locale }) {
   const client = new ApolloClient({
     uri: "https://api-us-east-1.graphcms.com/v2/cl3d3o63u1nnr01xn22c8e04h/master",
     cache: new InMemoryCache(),
   });
   const data = await client.query({
     query: gql`
-      query PageProduct($slug: String) {
+      query PageProduct($slug: String, $locale: Locale!) {
         product(where: { slug: $slug }) {
           id
           image
@@ -20,14 +20,28 @@ export async function getStaticProps({ params }) {
             html
           }
           slug
+          localizations(locales: [$locale]) {
+            description {
+              html
+            }
+            locale
+          }
         }
       }
     `,
     variables: {
       slug: params.productSlug,
+      locale
     },
   });
-  const product = data.data.product;
+  let product = data.data.product;
+
+  if (product.localizations.length > 0) {
+    product = {
+      ...product,
+      ...product.localizations[0]
+    }
+  }
   return {
     props: {
       product,
@@ -35,7 +49,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   const client = new ApolloClient({
     uri: "https://api-us-east-1.graphcms.com/v2/cl3d3o63u1nnr01xn22c8e04h/master",
     cache: new InMemoryCache(),
@@ -60,7 +74,17 @@ export async function getStaticPaths() {
     };
   });
   return {
-    paths,
+    paths: [
+      ...paths,
+      ...paths.flatMap((path) => {
+        return locales.map((locale) => {
+          return {
+            ...path,
+            locale,
+          };
+        });
+      }),
+    ],
     fallback: false,
   };
 }
