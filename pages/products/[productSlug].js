@@ -103,8 +103,8 @@ export default function ProductSlug({ product }) {
       <Image
         className={styles.productImage}
         src={buildImage(product.image.public_id).toURL()}
-        height="900"
-        width="900"
+        height="1333"
+        width="1000"
         alt={`${product.name} by Ashley Gooler | Iron & Clay Studio`}
       />
       <h1>{product.name}</h1>

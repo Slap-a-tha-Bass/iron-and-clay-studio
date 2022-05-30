@@ -95,7 +95,7 @@ export default function Home({ home, products }) {
         <Link href={heroLink}>
           <a>
             <Image
-              src={buildImage(heroBackground.public_id).toURL()}
+              src={heroBackground.url}
               height={heroBackground.height}
               width={heroBackground.width}
               alt=""
@@ -111,7 +111,7 @@ export default function Home({ home, products }) {
         <div className={styles.grid}>
           {products.map((product) => {
             const imageURL = buildImage(product.image.public_id)
-              .resize("w_900,h_900")
+              .resize("w_500,h_665")
               .toURL();
             return (
               <div className={styles.card} key={product.slug}>
@@ -119,8 +119,8 @@ export default function Home({ home, products }) {
                   <Image
                     className={styles.productImage}
                     src={imageURL}
-                    height="900"
-                    width="900"
+                    height="665"
+                    width="500"
                     alt={product.name}
                   />
                   <h2>{product.name}</h2>

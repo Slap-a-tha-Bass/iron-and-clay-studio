@@ -97,7 +97,9 @@ export default function Category({ category, products }) {
         }}
       >
         {products.map((product) => {
-          const imageURL = buildImage(product.image.public_id).resize('w_900,h_900').toURL();
+          const imageURL = buildImage(product.image.public_id)
+            .resize("w_500,h_665")
+            .toURL();
           return (
             <div key={product.id} style={{ margin: "1rem" }}>
               <h2>{product.name}</h2>
@@ -106,8 +108,8 @@ export default function Category({ category, products }) {
                 className={styles.productImage}
                 src={imageURL}
                 alt={`${product.name} by Ashley Gooler | Iron & Clay Studio`}
-                height="900"
-                width="900"
+                height="665"
+                width="500"
               />
             </div>
           );
