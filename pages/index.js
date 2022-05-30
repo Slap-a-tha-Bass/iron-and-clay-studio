@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import { buildImage } from "../lib/cloudinary";
 
 export async function getStaticProps({ locale }) {
   const client = new ApolloClient({
@@ -36,7 +37,7 @@ export async function getStaticProps({ locale }) {
       }
     `,
     variables: {
-      locale
+      locale,
     },
   });
 
@@ -45,8 +46,8 @@ export async function getStaticProps({ locale }) {
   if (home.localizations.length > 0) {
     home = {
       ...home,
-      ...home.localizations[0]
-    }
+      ...home.localizations[0],
+    };
   }
 
   const products = data.data.products;
@@ -94,7 +95,7 @@ export default function Home({ home, products }) {
         <Link href={heroLink}>
           <a>
             <Image
-              src={heroBackground.url}
+              src={buildImage(heroBackground.public_id).toURL()}
               height={heroBackground.height}
               width={heroBackground.width}
               alt=""
@@ -108,41 +109,44 @@ export default function Home({ home, products }) {
         <p className={styles.description}>{heroText}</p>
 
         <div className={styles.grid}>
-          {products.map((product) => (
-            <div className={styles.card} key={product.slug}>
-              <a href={`/products/${product.slug}`}>
-                <Image
-                  className={styles.productImage}
-                  src={product.image.url}
-                  height={
-                    product.image.height > 450 ? 450 : product.image.height
-                  }
-                  width={product.image.width > 350 ? 350 : product.image.width}
-                  alt={product.name}
-                />
-                <h2>{product.name}</h2>
-                <p>${product.price}</p>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    paddingTop: "1rem",
-                  }}
-                >
-                  <button
-                    className={`snipcart-add-item`}
-                    data-item-id={product.id}
-                    data-item-price={product.price}
-                    data-item-url={`/products/${product.slug}`}
-                    data-item-image={product.image.url}
-                    data-item-name={product.name}
+          {products.map((product) => {
+            const imageURL = buildImage(product.image.public_id)
+              .resize("w_900,h_900")
+              .toURL();
+            return (
+              <div className={styles.card} key={product.slug}>
+                <a href={`/products/${product.slug}`}>
+                  <Image
+                    className={styles.productImage}
+                    src={imageURL}
+                    height="900"
+                    width="900"
+                    alt={product.name}
+                  />
+                  <h2>{product.name}</h2>
+                  <p>${product.price}</p>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      paddingTop: "1rem",
+                    }}
                   >
-                    Add to cart
-                  </button>
-                </div>
-              </a>
-            </div>
-          ))}
+                    <button
+                      className={`snipcart-add-item`}
+                      data-item-id={product.id}
+                      data-item-price={product.price}
+                      data-item-url={`/products/${product.slug}`}
+                      data-item-image={product.image.url}
+                      data-item-name={product.name}
+                    >
+                      Add to cart
+                    </button>
+                  </div>
+                </a>
+              </div>
+            );
+          })}
         </div>
       </main>
 

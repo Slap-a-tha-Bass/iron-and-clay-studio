@@ -2,6 +2,7 @@ import styles from "../../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import Image from "next/image";
 import Head from "next/head";
+import { buildImage } from "../../lib/cloudinary";
 
 export async function getStaticProps({ params, locale }) {
   const client = new ApolloClient({
@@ -101,9 +102,9 @@ export default function ProductSlug({ product }) {
       </Head>
       <Image
         className={styles.productImage}
-        src={product.image.url}
-        height={product.image.height > 450 ? 450 : product.image.height}
-        width={product.image.width > 350 ? 350 : product.image.width}
+        src={buildImage(product.image.public_id).toURL()}
+        height="900"
+        width="900"
         alt={`${product.name} by Ashley Gooler | Iron & Clay Studio`}
       />
       <h1>{product.name}</h1>
@@ -121,7 +122,7 @@ export default function ProductSlug({ product }) {
         }}
       >
         <button
-          className={`snipcart-add-item ${styles.cartButton}`}
+          className={`snipcart-add-item ${styles.largeCardButton}`}
           data-item-id={product.id}
           data-item-price={product.price}
           data-item-url={`/products/${product.slug}`}
