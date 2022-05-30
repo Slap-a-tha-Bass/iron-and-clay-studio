@@ -126,6 +126,7 @@
   box-shadow: 5px 5px 20px #fff inset;
   font-size: 1.5rem;
   cursor: pointer;
+  margin: 1rem;
 }
 .largeCardButton:hover, .largeCardButton:active, .largeCardButton:focus {
   background-color: #ffb39e6d;
